@@ -1,0 +1,30 @@
+/* Components/NoteModal/style.module.scss */
+.modalContainer {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+    background: var(--mui-palette-background-paper, #fff);
+    width: 640px;
+    max-width: 90vw;
+    max-height: 80vh;
+    padding: 1rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    outline: none;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow: auto;
+}

@@ -1,3 +1,4 @@
+"use client";
 import React, { useCallback, useMemo } from "react";
 import { useNote } from "@/app/useNote";
 import {
@@ -12,7 +13,6 @@ import { Badge } from "@mui/material";
 
 export const Calendar = () => {
   const { currentDate, setCurrentDate, notes } = useNote();
-  console.log(notes);
   const dateWithNotes = useCallback(() => {
     return new Set(
       notes
@@ -66,8 +66,10 @@ export const Calendar = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DateCalendar
+        sx={{ height: "30vh" }}
         value={currentDate}
         onChange={(newDate) => {
+          // TODO: Handle clicked = filter + change current Date
           const clicked = newDate ?? dayjs();
           setCurrentDate(clicked);
         }}

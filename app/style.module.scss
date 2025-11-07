@@ -1,2 +1,19 @@
 .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin: 5rem 10rem;
+}
+
+.mainRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.noteSection {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-self: center;
 }

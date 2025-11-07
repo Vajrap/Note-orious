@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 
 export enum Tag {
   Work = "Work",
@@ -44,7 +44,8 @@ const initialNotes: Note[] = [
 
 function useCreateNote() {
   const [notes, setNotes] = useState(initialNotes);
-  const [currentDate, setCurrentDate] = useState(dayjs());
+  // TODO: Deliberately set selected to null on init, so we see all notes at first, The Pile Need so much works
+  const [currentDate, setCurrentDate] = useState<Dayjs | null>(null);
 
   const value = React.useMemo(() => {
     return {

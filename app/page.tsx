@@ -1,11 +1,13 @@
 "use client";
-import { CssBaseline } from "@mui/material";
+import { AppBar, CssBaseline, Toolbar, Typography } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 import { useMemo, useState } from "react";
 import { Provider } from "./useNote";
-import style from "./style.module.scss";
 import { Calendar } from "./Components/Calendar";
+import { Pile } from "./Components/Pile";
+import { NoteSection } from "./Components/NoteSection";
+import style from "./style.module.scss";
 
 enum Mode {
   light = "light",
@@ -13,24 +15,29 @@ enum Mode {
 }
 
 export default function Home() {
-  // Theme
-  const [mode, setMode] = useState(Mode.light);
+  const [mode] = useState(Mode.light);
   const theme = useMemo(() => createTheme({ palette: { mode } }), [mode]);
-
-  // const {setCurrentDate, currentDate} = useNote();
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
+        <AppBar position="sticky">
+          <Toolbar>
+            <Typography variant="h6" sx={{ flexGrow: 1 }}>
+              Note-orious
+            </Typography>
+          </Toolbar>
+        </AppBar>
         <Provider>
-          <section className={style.verticalBox}>
-            <section className={style.horizontalBox}>
-              {/*Calendar component*/}
+          <div className={style.wrapper}>
+            <div className={style.mainRow}>
               <Calendar />
-              {/*Note component*/}
-            </section>
-            <section>{/*Note form*/}</section>
-          </section>
+              <Pile />
+            </div>
+            <div className={style.noteSection}>
+              <NoteSection />
+            </div>
+          </div>
         </Provider>
       </CssBaseline>
     </ThemeProvider>
