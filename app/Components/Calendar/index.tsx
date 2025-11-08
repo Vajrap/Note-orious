@@ -43,7 +43,6 @@ export const Calendar = () => {
           overlap="circular"
           badgeContent={hasNotes ? noteCount[iso] : undefined}
           color="primary"
-          invisible={!hasNotes}
           sx={{
             "& .MuiBadge-badge": {
               backgroundColor: "orange",
@@ -69,9 +68,15 @@ export const Calendar = () => {
         sx={{ height: "30vh" }}
         value={currentDate}
         onChange={(newDate) => {
-          // TODO: Handle clicked = filter + change current Date
-          const clicked = newDate ?? dayjs();
-          setCurrentDate(clicked);
+          if (
+            currentDate &&
+            newDate &&
+            dayjs(newDate).isSame(currentDate, "day")
+          ) {
+            setCurrentDate(null);
+          } else {
+            setCurrentDate(newDate);
+          }
         }}
         slots={{ day: DayBadge }}
       />
