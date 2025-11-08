@@ -40,6 +40,13 @@ const initialNotes: Note[] = [
     note: "Sit",
     tags: [Tag.work, Tag.study],
   },
+  {
+    id: 5,
+    title: "Past Notes",
+    note: "Sit",
+    tags: [Tag.work, Tag.study],
+    date: dayjs().add(-3, "day").format("YYYY-MM-DD"),
+  },
 ];
 
 // Filtering Enums
@@ -59,7 +66,7 @@ function useCreateNote() {
   const [currentDate, setCurrentDate] = useState<Dayjs | null>(null);
 
   const [filterMode, setFilterMode] = useState<FilterMode>(FilterMode.All);
-  const [showPast, setShowPast] = useState(false);
+  const [showPast, setShowPast] = useState(true);
   const [sortOrder, setSortOrder] = useState<SortOrder>(SortOrder.desc);
 
   const [filterTag, setFilterTag] = useState<Tag | null>(null);
