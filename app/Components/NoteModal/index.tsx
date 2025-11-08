@@ -62,7 +62,10 @@ export const NoteModal = ({
 
   return (
     <Modal open={open} onClose={onClose}>
-      <Box className={styles.modalContainer}>
+      <Box
+        className={styles.modalContainer}
+        sx={{ backgroundColor: (theme) => theme.palette.background.paper }}
+      >
         <div className={styles.header}>
           <Typography variant="h6" noWrap>
             {note?.title ?? "Note"}
